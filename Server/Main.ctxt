@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Main
+comment0.text=\r\n\ Diese\ Klasse\ startet\ den\ Server\ und\ verbindet\ neue\ Clients\ mit\ der\ Anwendung.\r\n\r\n\ @author\ Fabio\ Kron.\r\n\ @version\ 23.12.2020.\r\n
+comment1.params=
+comment1.target=void\ main()
+comment1.text=\r\n\ Startet\ den\ Server.\r\n
+comment2.params=
+comment2.target=void\ runServer()
+comment2.text=\r\n\ Startet\ den\ Server\ auf\ dem\ angegebenen\ Port.\r\n\ \r\n\ @throws\ IOException\ bei\ Problemen\ mit\ dem\ Server.\r\n
+comment3.params=server
+comment3.target=void\ connectClients(java.net.ServerSocket)
+comment3.text=\r\n\ Verbindet\ neue\ Clients\ mit\ dem\ Server.\r\n\ \r\n\ @param\ server\ \:\ ServerSocket.\r\n\ @throws\ IOException\ bei\ Fehlern\ des\ Verbindungsaufbaus\ mit\ Clients.\r\n
+numComments=4
