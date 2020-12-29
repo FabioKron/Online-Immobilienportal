@@ -49,12 +49,8 @@ public class Main
             System.out.println("Warten auf Client auf Port " + port );
             Socket client = server.accept();
             
-            DataOutputStream output = new DataOutputStream(client.getOutputStream());
-            output.writeUTF("test");
-            
-            DataInputStream input = new DataInputStream(client.getInputStream());
-            System.out.println(input.readUTF());
-
+            ClientInterface newClientInterface = new ClientInterface(client);
+            newClientInterface.start();
         }
     }
 }

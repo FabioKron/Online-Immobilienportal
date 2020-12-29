@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=ClientInterface
+comment0.text=\r\n\ Diese\ Klasse\ ist\ f\u00FCr\ die\ Kommunikation\ mit\ dem\ Client\ verantwortlich\r\n\r\n\ @author\ Fabio\ Kron\r\n\ @version\ 12.2020\r\n
+comment1.params=client
+comment1.target=ClientInterface(java.net.Socket)
+comment2.params=
+comment2.target=void\ run()
+numComments=3
