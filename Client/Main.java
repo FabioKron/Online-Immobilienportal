@@ -27,8 +27,13 @@ public class Main
             DataOutputStream output;
             output = new DataOutputStream(client.getOutputStream());
             
-            System.out.println(input.readUTF());
-            output.writeUTF("test erhalten");
+            if (input.readUTF().equals("test")) {
+                    
+                output.writeUTF("test erhalten");
+                if (input.readUTF().equals("test erhalten erhalten")){
+                    System.out.println("Verbindung zum Server aufgebaut.");
+                }
+            }
             
         } catch(UnknownHostException | ConnectException e) {
             System.out.println("Es konnte keine Verbindung zum Server hergestellt werden!");

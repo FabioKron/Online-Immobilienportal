@@ -25,6 +25,7 @@ public class ClientInterface extends Thread
             this.output.writeUTF("test");
             
             if (this.input.readUTF().equals("test erhalten")) {
+                this.output.writeUTF("test erhalten erhalten");
                 System.out.println("Verbindung mit " + clientAddress + " aufgebaut!");
             } else {
                 System.out.println("Fehler beim Verbindungsaufbau mit " + clientAddress + "!");
