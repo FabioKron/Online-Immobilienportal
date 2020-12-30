@@ -37,8 +37,44 @@ public class ClientInterface extends Thread
     }
     
     public void run() {
-        for (int i = 1; i <= 5; i++) {
-            System.out.println(i);
+        try {
+            output.writeUTF("\n\nWillkommen auf unserem Immobilienportal!");
+            displayMainMenu();
+        }catch(IOException e){
+            e.printStackTrace();
         }
+            
+    }
+    
+    public void displayMainMenu() throws IOException {
+        while (true){
+            output.writeUTF(getMainMenu());
+            String userInput = getUserInput();
+            
+            if (userInput.equals("registrieren")){
+                // displaySignUpMenu();
+            } else if(userInput.equals("anmelden")) {
+                //displaySignInMenu();
+            } else{
+                output.writeUTF("\n\nUngültige Eingabe!!");
+            }
+        }
+    }
+    
+    public String getMainMenu() {
+        String mainMenu =
+            "\n\nDas ist das Hauptmenü des Immobilienportals!" +
+            "\nWas wollen Sie tun?" + 
+            "\nregistrieren: einen neuen Account registrieren" +
+            "\nanmelden: sich mit einem Account anmelden" +
+            "\nbeenden: Das Programm beenden";
+            
+        
+        return mainMenu;
+    }
+    
+    public String getUserInput() throws IOException {
+        output.writeUTF("Benutzereingabe");
+        return input.readUTF();
     }
 }

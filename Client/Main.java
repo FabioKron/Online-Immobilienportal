@@ -1,5 +1,6 @@
 import java.net.*;
 import java.io.*;
+import java.util.Scanner;
 
 
 /**
@@ -27,11 +28,16 @@ public class Main
             DataOutputStream output;
             output = new DataOutputStream(client.getOutputStream());
             
+            Scanner scanner;
+            scanner = new Scanner(System.in);
+            
             if (input.readUTF().equals("test")) {
                     
                 output.writeUTF("test erhalten");
                 if (input.readUTF().equals("test erhalten erhalten")){
                     System.out.println("Verbindung zum Server aufgebaut.");
+                    
+                    listen(input, output, scanner);
                 }
             }
             
@@ -39,6 +45,17 @@ public class Main
             System.out.println("Es konnte keine Verbindung zum Server hergestellt werden!");
         } catch(IOException e) {
             e.printStackTrace();
+        }
+    }
+    
+    public static void listen(DataInputStream input, DataOutputStream output, Scanner scanner) throws IOException {
+        while(true) { 
+            String serverMessage = input.readUTF();
+            if (serverMessage.equals("Benutzereingabe")){
+                output.writeUTF(scanner.nextLine());
+            } else {
+                System.out.println(serverMessage);
+            }
         }
     }
 }
