@@ -40,6 +40,8 @@ public class ClientInterface extends Thread
         try {
             output.writeUTF("\n\nWillkommen auf unserem Immobilienportal!");
             displayMainMenu();
+        }catch(EOFException e) {
+            System.out.println("Verbindung zu " + clientAddress + " getrennt!");
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -51,13 +53,17 @@ public class ClientInterface extends Thread
             output.writeUTF(getMainMenu());
             String userInput = getUserInput();
             
-            if (userInput.equals("registrieren")){
-                // displaySignUpMenu();
-            } else if(userInput.equals("anmelden")) {
-                //displaySignInMenu();
-            } else{
-                output.writeUTF("\n\nUngültige Eingabe!!");
-            }
+            processMainMenuInput(userInput);
+        }
+    }
+    
+    public void processMainMenuInput(String userInput) throws IOException {
+        if (userInput.equals("registrieren")){
+            // displaySignUpMenu();
+        } else if(userInput.equals("anmelden")) {
+            //displaySignInMenu();
+        } else{
+            output.writeUTF("\n\nUngültige Eingabe!!");
         }
     }
     

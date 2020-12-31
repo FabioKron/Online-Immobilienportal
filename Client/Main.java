@@ -41,6 +41,8 @@ public class Main
                 }
             }
             
+            client.close();
+            System.out.println("\nBis zum nächsten mal!");
         } catch(UnknownHostException | ConnectException e) {
             System.out.println("Es konnte keine Verbindung zum Server hergestellt werden!");
         } catch(IOException e) {
@@ -52,7 +54,12 @@ public class Main
         while(true) { 
             String serverMessage = input.readUTF();
             if (serverMessage.equals("Benutzereingabe")){
-                output.writeUTF(scanner.nextLine());
+                String userInput = scanner.nextLine().toLowerCase();
+                if (userInput.equals("beenden")){
+                    return;
+                } else {
+                    output.writeUTF(userInput);
+                }
             } else {
                 System.out.println(serverMessage);
             }
