@@ -9,6 +9,7 @@ import java.io.*;
  */
 public class Main
 {   
+    /** Port des Servers, mit dem die Clients kommunizieren können. */
     private static int port = 110;
     
     /**

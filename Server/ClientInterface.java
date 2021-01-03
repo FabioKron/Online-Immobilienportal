@@ -10,11 +10,25 @@ import java.io.*;
  */
 public class ClientInterface extends Thread
 {   
+    /** Schnittstelle zur Verbindung mit dem Client. */
     private Socket client;
+    
+    /** Zum Empfangen von Daten des Clients. */
     private DataInputStream input;
+    
+    /** Zum Senden von Daten an den Client. */
     private DataOutputStream output;
+    
+    /** IP-Adresse und Port des Clients. */
     private SocketAddress clientAddress;
-
+    
+    
+    /**
+     * Verbindungsaufbau mit dem Client,
+     * Initialisieren der dazu benötigten Schnittstellen.
+     * 
+     * @param client : Socket 
+     */
     public ClientInterface(Socket client) {
         this.client = client;
         try {
@@ -36,6 +50,10 @@ public class ClientInterface extends Thread
 
     }
     
+    
+    /**
+     * Kommunikation mit dem Client: Benutzerobefläche und Benutzereingaben.
+     */
     public void run() {
         try {
             output.writeUTF("\n\nWillkommen auf unserem Immobilienportal!");
@@ -48,6 +66,12 @@ public class ClientInterface extends Thread
             
     }
     
+    /**
+     * Senden des Hauptmenüs an den Client;
+     * Empfangen und Verarbeiten der Benutzereingabe.
+     * 
+     * @throws IOException bei Fehlern mit der Verbindung.
+     */
     public void displayMainMenu() throws IOException {
         while (true){
             output.writeUTF(getMainMenu());
@@ -57,9 +81,17 @@ public class ClientInterface extends Thread
         }
     }
     
+    /**
+     * Verarbeiten der Benutzereingabe im Hauptmenü
+     * mit möglicher Einleitung des nächsten Programmschritts.
+     * 
+     * @param userInput : String Benutzereingabe im Hauptmenü.
+     * 
+     * @throws IOException bei Fehlern mit der Verbindung.
+     */
     public void processMainMenuInput(String userInput) throws IOException {
         if (userInput.equals("registrieren")){
-            // displaySignUpMenu();
+            displaySignUpMenu();
         } else if(userInput.equals("anmelden")) {
             //displaySignInMenu();
         } else{
@@ -67,6 +99,32 @@ public class ClientInterface extends Thread
         }
     }
     
+    /**
+     * Benutzeroberfläche, um einen neuen Nutzer zu registrieren:
+     * Nutzer wird zur Eingabe von Name, E-Mail und Passwort aufgefordert
+     * Neuer Nutzer wird erstellt und gespeichert.
+     * 
+     * @throws IOException bei Fehlern mit der Verbindung.
+     */
+    public void displaySignUpMenu() throws IOException {
+        
+        output.writeUTF("\n\nHier können sie einen neuen Nutzer registrieren!");
+        
+        
+        // String name = receiveNameInput();
+        // String eMail = receiveEMailInput();
+        // String password = receivePasswordInput();
+        
+        // Benutzer instanziieren
+        // Benutzer speichern
+        
+    }
+    
+    /**
+     * Rückgabe des Texts des Hauptmenüs.
+     * 
+     * @return mainMenu : String; das Hauptmenü als String.
+     */
     public String getMainMenu() {
         String mainMenu =
             "\n\nDas ist das Hauptmenü des Immobilienportals!" +
@@ -79,8 +137,16 @@ public class ClientInterface extends Thread
         return mainMenu;
     }
     
+    /**
+     * Fordern und Empfangen einer Benutzereingabe beim Client.
+     * 
+     * @return userInput : String; Benutzereingabe beim Client.
+     * 
+     * @throws IOException bei Fehlern mit der Verbindung.
+     */
     public String getUserInput() throws IOException {
         output.writeUTF("Benutzereingabe");
-        return input.readUTF();
+        String userInput = input.readUTF();
+        return userInput;
     }
 }

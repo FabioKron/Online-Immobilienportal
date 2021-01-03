@@ -10,10 +10,16 @@ import java.util.Scanner;
  * @version 12.2020
  */
 public class Main
-{
+{   
+    /** IP-Adresse des Servers. */
     private static String serverIP = "127.0.0.1";
+    /** Port des Servers. */
     private static int serverPort = 110;
     
+    /**
+     * Startet den Client
+     * Vor dem Start des Clients muss der Server gestartet sein.
+     */
     public static void main() {
         System.out.println("\n\n");
         System.err.println("\n\n");
@@ -50,6 +56,18 @@ public class Main
         }
     }
     
+    /**
+     * Kommunikation mit dem Server
+     * Erhalten von Nachrichten des Servers
+     * Anzeigen der Benutzerobefläche
+     * Senden von Benutzereingaben.
+     * 
+     * @param input : DataInputStream zum empfangen von Nachrichten des Servers.
+     * @param output : DataOutputStream zum senden von Nachrichten an den Server.
+     * @param scanner : Scanner zum lesen von Benutzereingaben.
+     * 
+     * @throws IOException falls Fehler bei der Kommunikation mit dem Server auftreten.
+     */
     public static void listen(DataInputStream input, DataOutputStream output, Scanner scanner) throws IOException {
         while(true) { 
             String serverMessage = input.readUTF();
