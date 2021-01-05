@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=User
+comment0.text=\r\n\ Die\ Klasse\ speichert\ Informationen\ zu\ dem\ Benutzer\ und\r\n\ stellt\ Funktionalit\u00E4ten\ bereit,\ die\ auf\ den\ jeweiligen\ Benutzer\ angepasst\ sind.\r\n\r\n\ @author\ Fabio\ Kron.\r\n\ @version\ 1.2021.\r\n
+comment1.params=name\ eMail\ password
+comment1.target=User(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment1.text=\r\n\ Initialisieren\ des\ Benutzers\ mit\ Name,\ E-Mail\ und\ Passwort.\r\n\ \r\n\ @param\ name\ String\ \:\ Name\ des\ Benutzers.\r\n\ @param\ eMail\ String\ \:\ E-Mail\ des\ Benutzers.\r\n\ @param\ password\ String\ \:\ Verschl\u00FCsseltes\ Passwort\ des\ Benutzers.\r\n
+numComments=2

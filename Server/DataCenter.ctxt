@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=DataCenter
+comment0.text=\r\n\ Diese\ Klasse\ speichert\ alle\ Benutzer\ und\ alle\ Immobilien.\r\n\r\n\ @author\ Fabio\ Kron.\r\n\ @version\ 1.2021.\r\n
+comment1.params=newUser
+comment1.target=void\ addNewUser(User)
+comment1.text=\r\n\ Die\ Methode\ speichert\ neue\ Benutzer.\r\n\ \r\n\ @param\ newUser\ User\:\ der\ neu\ erstellte\ Benutzer.\r\n
+numComments=2

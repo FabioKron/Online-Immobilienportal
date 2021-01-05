@@ -115,8 +115,8 @@ public class ClientInterface extends Thread
         // String eMail = receiveEMailInput();
         // String password = receivePasswordInput();
         
-        // Benutzer instanziieren
-        // Benutzer speichern
+        User newUser = new User("Bob", "bob@bob.bob", "Passwort123");
+        DataCenter.addNewUser(newUser);
         
     }
     
