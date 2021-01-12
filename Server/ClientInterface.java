@@ -1,5 +1,8 @@
 import java.net.*;
 import java.io.*;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 
 /**
@@ -110,15 +113,91 @@ public class ClientInterface extends Thread
         
         output.writeUTF("\n\nHier können sie einen neuen Nutzer registrieren!");
         
+        String name = receiveNameInput();
+        String eMail = receiveEMailInput();
+        String password = receivePasswordInput();
         
-        // String name = receiveNameInput();
-        // String eMail = receiveEMailInput();
-        // String password = receivePasswordInput();
+        System.out.println(password);
         
-        User newUser = new User("Bob", "bob@bob.bob", "Passwort123");
+        User newUser = new User(name , eMail, password);
         DataCenter.addNewUser(newUser);
         
     }
+    /**
+     * In der Methode wird der Nutzer dazu aufgefordert, sein Passort einzugeben;
+     * dieses wird dann verschlüsselt zurückgegeben.
+     * 
+     * @throws IOException bei Fehlern der Kommunikation mit dem Client.
+     * 
+     * @return password verschlüsseltes Passwort des Benutzers.
+     */
+    public String receivePasswordInput() throws IOException {
+        while (true) {
+            output.writeUTF("\nBitte geben Sie Ihr Passwort ein:");
+            String password = getUserInput();
+            
+            if (password.length() >= 8) {
+                try {
+                    MessageDigest md = MessageDigest.getInstance("MD5");
+                    
+                    byte[] bytePassword = md.digest(password.getBytes());
+                    
+                    BigInteger bIPassword = new BigInteger(1, bytePassword);
+                    
+                    password = bIPassword.toString(16);
+                    return password;
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                    System.exit(1);
+                }
+            }
+            output.writeUTF("Passwort zu kurz!");
+        }
+    }
+    
+    /**
+     * Der Benutzer wird aufgefordert seine E-Mail einzugeben;
+     * daraufhin wird die Eingabe validiert.
+     * 
+     * @throws IOException bei Problemen der Kommunikation mit dem Client.
+     * 
+     * @return eMail validierte E-Mail des Benutzers.
+     */
+    public String receiveEMailInput() throws IOException {
+        while (true) {
+            output.writeUTF("\nBitte geben Sie Ihre E-Mail ein:");
+            String eMail = getUserInput();
+            
+            if (eMail.matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$")) {
+                return eMail;
+            }
+            output.writeUTF("Ungültige E-Mail!");
+        }
+    }
+    
+    /**
+     * Der Benutzer wird aufgefordert, seinen Namen einzugeben;
+     * daraufhin wird der Name validiert.
+     * 
+     * @throws IOException bei Fehlern der Kommunikation mit dem Client.
+     * 
+     * @return name validierter Name des Benutzers.
+     */
+    public String receiveNameInput() throws IOException {
+        
+        while (true) {
+            output.writeUTF("\nBitte geben Sie Ihren Namen ein:");
+            String name = getUserInput();
+            
+            if (name.matches("[a-z][a-z -]*")) {
+                return name;
+            }
+            output.writeUTF("Ungültiger Name!");
+        }
+        
+    }
+        
+        
     
     /**
      * Rückgabe des Texts des Hauptmenüs.
