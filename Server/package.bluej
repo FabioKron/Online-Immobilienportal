@@ -2,13 +2,13 @@
 dependency1.from=Main
 dependency1.to=ClientInterface
 dependency1.type=UsesDependency
-dependency2.from=User
-dependency2.to=RealEstate
+dependency2.from=DataCenter
+dependency2.to=User
 dependency2.type=UsesDependency
 dependency3.from=DataCenter
-dependency3.to=User
+dependency3.to=RealEstate
 dependency3.type=UsesDependency
-dependency4.from=DataCenter
+dependency4.from=User
 dependency4.to=RealEstate
 dependency4.type=UsesDependency
 dependency5.from=ClientInterface

@@ -51,4 +51,13 @@ public class User
         boolean isMatching = this.eMail.equals(eMail) && this.password.equals(password);
         return isMatching;
     }
+    
+    /**
+     * Die Methode gibt den Namen des Benutzers zurück.
+     * 
+     * return name String - Name des Benutzers.
+     */
+    public String getName() {
+        return name;
+    }
 }

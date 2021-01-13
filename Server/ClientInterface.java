@@ -118,10 +118,84 @@ public class ClientInterface extends Thread
         User user = DataCenter.authenticateUser(eMail, password);
         if (user != null) { 
             output.writeUTF("Anmeldung erfolgreich!");
-            //displayUserMenu(user);
+            displayUserMenu(user);
         } else {
             output.writeUTF("Benutzername oder Passwort falsch!");
         }
+    }
+    
+    /**
+     * Benutzermenü: 
+     * Der Nutzer kann zwischen verschiedenen Aktionen auswählen:
+     * - Immobilien hinzufügen
+     * - Eigene Immobilien ansehen
+     * - Eigene Immobilie entfernen
+     * - Alle angebotenen Immobilien suchen
+     * - Abmelden.
+     * 
+     * @param user User - Der angemeldete Nutzer.
+     * 
+     * @throws IOException bei Fehlern der Kommunikation mit dem Client.
+     */
+    public void displayUserMenu(User user) throws IOException {
+        String userInput;
+        do {
+            output.writeUTF(getUserMenu(user.getName()));
+            userInput = getUserInput();
+            
+            processUserMenuInput(userInput, user);
+        } while (!userInput.equals("abmelden"));
+        
+        output.writeUTF("Erfolgreich abgemeldet!");
+    }
+    
+    /**
+     * Die Benutzereingabe im Benutzermenü wird verarbeitet
+     * und die nächste Aktion wird gestartet.
+     * 
+     * @param userInput String - Nutzereingabe des Benutzermenüs.
+     * @param user User - angemeldeter Nutzer, der die Eingabe gemacht hat.
+     * 
+     * @throws IOException bei Fehlern der Kommunikation mit dem Client.
+     */
+    public void processUserMenuInput(String userInput, User user) throws IOException {
+        switch (userInput) {
+            case "hinzufügen": 
+                //displayAddRealEstateMenu(user);
+                break;
+            case "ansehen":
+                //displayUsersRealEstates(user);
+                break;
+            case "entfernen":
+                //displayRemoveRealEstateMenu(user);
+                break;
+            case "suchen":
+                //displayAllRealEstates();
+                break;
+            case "abmelden":
+                break;
+            default:
+                output.writeUTF("Ungültige Eingabe!");
+        }
+    }
+    
+    /**
+     * Diese Methode gibt das Nutzermenü zurück.
+     * 
+     * @param name String - Name des Benutzers.
+     * 
+     * @return userMenu String - Das Benutzermenü.
+     */
+    public String getUserMenu(String name) {
+        String userMenu = "\n\nHerzlich Willkommen " + name.toUpperCase() + "!" 
+            + "\nWas wollen Sie tun?"
+            + "\nhinzufügen: Immobilie hinzufügen"
+            + "\nansehen: Eigene Immobilien ansehen"
+            + "\nentfernen: Immobilie löschen"
+            + "\nsuchen: Alle angebotenen Immobilien suchen"
+            + "\nabmelden: Abmelden";
+        
+        return userMenu;
     }
     
     /**
