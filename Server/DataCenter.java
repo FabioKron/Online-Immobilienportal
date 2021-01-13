@@ -16,6 +16,27 @@ public class DataCenter
     /** Speichert Referenzen zu allen Immobilien. */
     private static LinkedList<RealEstate> realEstates = new LinkedList<RealEstate>();
     
+    /**
+     * Es wird überprüft, ob die E-Mail und das Passwort mit einem gespeicherten
+     * Nutzer übereinstimmen; falls das der Fall ist, wird dieser Nutzer zurückgegeben.
+     * 
+     * @param eMail String - E-Mail des Nutzers der authentifiziert werden soll.
+     * @param passwort String - verschlüsseltes Passwort des Nutzers der authentifiziert
+     * werden soll.
+     * 
+     * @return user User - falls die Anmeldedaten mit einem Nutzer übereinstimmen;
+     * ansonsten null.
+     */
+    public static User authenticateUser(String eMail, String password) {
+        for (User user: users) {
+            if (user.matchesSignInData(eMail, password)) {
+                return user;
+            }
+        }
+        
+        return null;
+    }
+    
     
     /**
      * Die Methode speichert neue Benutzer.

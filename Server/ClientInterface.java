@@ -96,9 +96,31 @@ public class ClientInterface extends Thread
         if (userInput.equals("registrieren")){
             displaySignUpMenu();
         } else if(userInput.equals("anmelden")) {
-            //displaySignInMenu();
+            displaySignInMenu();
         } else{
             output.writeUTF("\n\nUngültige Eingabe!!");
+        }
+    }
+    
+    /**
+     * Der Benutzer wird dazu aufgefordert, sich anzumelden;
+     * die Eingaben werden überprüft und falls diese stimmen, wird der Benutzer in das
+     * Benutzermenü weitergeleitet, wo er weitere Aktionen durchführen kann.
+     * 
+     * @throws IOException bei Fehlern mit der Verbindung.
+     */
+    public void displaySignInMenu() throws IOException {
+        output.writeUTF("Hier können Sie sich anmelden!");
+        
+        String eMail = receiveEMailInput();
+        String password = receivePasswordInput();
+        
+        User user = DataCenter.authenticateUser(eMail, password);
+        if (user != null) { 
+            output.writeUTF("Anmeldung erfolgreich!");
+            //displayUserMenu(user);
+        } else {
+            output.writeUTF("Benutzername oder Passwort falsch!");
         }
     }
     
@@ -116,9 +138,7 @@ public class ClientInterface extends Thread
         String name = receiveNameInput();
         String eMail = receiveEMailInput();
         String password = receivePasswordInput();
-        
-        System.out.println(password);
-        
+                
         User newUser = new User(name , eMail, password);
         DataCenter.addNewUser(newUser);
         
@@ -156,7 +176,7 @@ public class ClientInterface extends Thread
     }
     
     /**
-     * Der Benutzer wird aufgefordert seine E-Mail einzugeben;
+     * Der Benutzer wird aufgefordert, seine E-Mail einzugeben;
      * daraufhin wird die Eingabe validiert.
      * 
      * @throws IOException bei Problemen der Kommunikation mit dem Client.

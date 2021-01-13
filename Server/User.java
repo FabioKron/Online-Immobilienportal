@@ -36,4 +36,19 @@ public class User
         
         System.out.println("Neuer Benutzer hinzugefügt: " + this.name);
     }
+    
+    /**
+     * Es wird überprüft, ob die Argumente mit der E-Mail und dem Passwort des Nutzers 
+     * übereinstimmen.
+     * 
+     * @param eMail String - E-Mail,die mit der des Benutzers überprüft werden soll.
+     * @param password String - verschlüsseltes Passwort, das mit dem des Benutzers
+     * überprüft werden soll.
+     * 
+     * @return isMatching boolean - true falls die Daten übereinstimmen, ansonsten false.
+     */
+    public boolean matchesSignInData(String eMail, String password) {
+        boolean isMatching = this.eMail.equals(eMail) && this.password.equals(password);
+        return isMatching;
+    }
 }

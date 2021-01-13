@@ -1,7 +1,10 @@
 #BlueJ class context
 comment0.target=DataCenter
 comment0.text=\r\n\ Diese\ Klasse\ speichert\ alle\ Benutzer\ und\ alle\ Immobilien.\r\n\r\n\ @author\ Fabio\ Kron.\r\n\ @version\ 1.2021.\r\n
-comment1.params=newUser
-comment1.target=void\ addNewUser(User)
-comment1.text=\r\n\ Die\ Methode\ speichert\ neue\ Benutzer.\r\n\ \r\n\ @param\ newUser\ User\:\ der\ neu\ erstellte\ Benutzer.\r\n
-numComments=2
+comment1.params=eMail\ password
+comment1.target=User\ authenticateUser(java.lang.String,\ java.lang.String)
+comment1.text=\r\n\ Es\ wird\ \u00FCberpr\u00FCft,\ ob\ die\ E-Mail\ und\ das\ Passwort\ mit\ einem\ gespeicherten\r\n\ Nutzer\ \u00FCbereinstimmen;\ falls\ das\ der\ Fall\ ist,\ wird\ dieser\ Nutzer\ zur\u00FCckgegeben.\r\n\ \r\n\ @param\ eMail\ String\ -\ E-Mail\ des\ Nutzers\ der\ authentifiziert\ werden\ soll.\r\n\ @param\ passwort\ String\ -\ verschl\u00FCsseltes\ Passwort\ des\ Nutzers\ der\ authentifiziert\r\n\ werden\ soll.\r\n\ \r\n\ @return\ user\ User\ -\ falls\ die\ Anmeldedaten\ mit\ einem\ Nutzer\ \u00FCbereinstimmen;\r\n\ ansonsten\ null.\r\n
+comment2.params=newUser
+comment2.target=void\ addNewUser(User)
+comment2.text=\r\n\ Die\ Methode\ speichert\ neue\ Benutzer.\r\n\ \r\n\ @param\ newUser\ User\:\ der\ neu\ erstellte\ Benutzer.\r\n
+numComments=3
