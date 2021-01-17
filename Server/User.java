@@ -55,9 +55,18 @@ public class User
     /**
      * Die Methode gibt den Namen des Benutzers zurück.
      * 
-     * return name String - Name des Benutzers.
+     * @return name String - Name des Benutzers.
      */
     public String getName() {
         return name;
+    }
+    
+    /**
+     * Die E-Mail des Benutzers wird zurückgegeben.
+     * 
+     * @return eMail String - E-Mail des Benutzers.
+     */
+    public String getEMail() {
+        return eMail;
     }
 }

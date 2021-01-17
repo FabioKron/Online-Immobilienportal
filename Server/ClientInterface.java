@@ -161,7 +161,7 @@ public class ClientInterface extends Thread
     public void processUserMenuInput(String userInput, User user) throws IOException {
         switch (userInput) {
             case "hinzufügen": 
-                //displayAddRealEstateMenu(user);
+                displayAddRealEstateMenu(user);
                 break;
             case "ansehen":
                 //displayUsersRealEstates(user);
@@ -176,6 +176,102 @@ public class ClientInterface extends Thread
                 break;
             default:
                 output.writeUTF("Ungültige Eingabe!");
+        }
+    }
+    
+    /**
+     * Durch diese Methode kann der Benutzer neue Immobilien erstellen und speichern.
+     * 
+     * @param user User - der angemeldete Benutzer.
+     * 
+     * @throws IOException bei Fehlern mit der Verbindung mit dem Client.
+     */
+    public void displayAddRealEstateMenu(User user) throws IOException {
+        output.writeUTF("\nHier können Sie eine neue Immobilien hinzufügen!");
+        
+        double price = receivePriceInput();
+        String address = receiveAddressInput();
+        int numOfRooms = receiveNumOfRoomsInput();
+        int floorArea = receiveFloorAreaInput();
+        
+        RealEstate newRealEstate = new RealEstate(price, address, numOfRooms, floorArea,
+        user);
+        
+        System.out.println(newRealEstate.getInfo());
+        
+        
+        //Immobilie spiechern
+    }
+    
+    /**
+     * Der Benutzer wird aufgefordert, die Fläche der Immobilie einzugeben.
+     * 
+     * @return floorArea int - eingegebene Fläche der Immobilie.
+     * 
+     * @throws IOException bei Fehlern mit der Verbindung mit dem Client.
+     */
+    public int receiveFloorAreaInput() throws IOException {
+        while (true) {
+            output.writeUTF("Welche Fläche hat die Immobilie?");
+            int floorArea = Integer.parseInt(getUserInput());
+            
+            if (floorArea > 0) {
+                return floorArea;
+            }
+        }
+    }
+    
+    /**
+     * Der Benutzer wird aufgefordert, die Anzahl der Räume der Immobilie einzugeben.
+     * 
+     * @return numOfRooms int - eingegebene Anzahl der Räume der Immobilie.
+     * 
+     * @throws IOException bei Fehlern mit der Verbindung mit dem Client.
+     */
+    public int receiveNumOfRoomsInput() throws IOException {
+        while (true) {
+            output.writeUTF("Wie viele Räume hat die Immobilie?");
+            int numOfRooms = Integer.parseInt(getUserInput());
+            
+            if (numOfRooms > 0) {
+                return numOfRooms;
+            }
+        }
+    }
+    
+    /**
+     * Der Benutzer wird dazu aufgefordert, die Adresse seiner Immobilie einzugeben.
+     * 
+     * @return address String - eingegebene Adresse der Immobilie.
+     * 
+     * @throws IOException bei Fehlern mit der Verbindung mit dem Client.
+     */
+    public String receiveAddressInput() throws IOException {
+        while (true) {
+            output.writeUTF("\nWas ist die Adresse der Immobilie?");
+            String address = getUserInput();
+            
+            if (address.length() > 0) {
+                return address;
+            }
+        }
+    }
+    
+    /**
+     * Der Benutzer wird dazu aufgefordert, den Preis seiner Immobilie einzugeben.
+     * 
+     * @return price double - Eingegebener Preis der Immobilie.
+     * 
+     * @throws IOException bei Fehlern mit der Verbindung mit dem Client.
+     */
+    public double receivePriceInput() throws IOException{
+        while (true) {
+            output.writeUTF("\nWas ist der Preis Ihrer Immobilie?");
+            double price = Double.parseDouble(getUserInput());
+            
+            if (price > 0) {
+                return price;
+            }
         }
     }
     

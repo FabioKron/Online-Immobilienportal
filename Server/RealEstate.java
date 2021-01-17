@@ -1,33 +1,55 @@
 
 /**
- * Write a description of class RealEstate here.
+ * Diese Klasse speichert die Informationen zu der jeweiligen Immobilie.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Fabio Kron.
+ * @version 1/2021.
  */
 public class RealEstate
-{
-    // instance variables - replace the example below with your own
-    private int x;
-
+{   
+    /** Preis der Immobilie */
+    private double price;
+    /** Adresse der Immobilie */
+    private String address;
+    /** Anzahl der Räume der Immobilie */
+    private int numOfRooms;
+    /** Fläche der Immobilie */
+    private int floorArea;
+    /** Besitzer der Immobilie */
+    private User owner;
+    
     /**
-     * Constructor for objects of class RealEstate
+     * Konstruktor von RealEstate; die Attribute werden initialisiert.
+     * 
+     * @param price double - Preis der Immobilie.
+     * @param address String - Adresse der Immobilie.
+     * @param numOfRooms int - Anzahl der Räume der Immobilie.
+     * @param floorArea int - Fläche der Immobilie.
+     * @param owner User - Besitzer der Immobilie.
      */
-    public RealEstate()
-    {
-        // initialise instance variables
-        x = 0;
+    public RealEstate(double price, String address, int numOfRooms, int floorArea,
+    User owner) {
+        this.price = price;
+        this.address = address;
+        this.numOfRooms = numOfRooms;
+        this.floorArea = floorArea;
+        this.owner = owner;
     }
-
+    
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Die Methode gibt einen "Infostring" über die Immobilie zurück.
+     * 
+     * @return info String - Informationen zur Immobilie.
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public String getInfo() {
+        String info = String.format("\n%s wird verkauft für $%,.2f!"
+            + "\nDie Immobilie hat %d Räume und eine Fläche von %d qm."
+            + "\nDie E-Mail des Besitzers ist: %s",
+            address,
+            price,
+            numOfRooms,
+            floorArea,
+            owner.getEMail());
+        return info;
     }
 }
