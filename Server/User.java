@@ -38,6 +38,41 @@ public class User
     }
     
     /**
+     * Die Methode löscht die Immobilie mit dem angegebenen Index vom
+     * Nutzer und aus dem DataCenter.
+     * 
+     * @param indexOfRealEstate int - Index der Immobilie, die gelöscht werden soll.
+     */
+    public void removeRealEstate(int indexOfRealEstate) {
+        RealEstate toRemove = ownedRealEstates.get(indexOfRealEstate);
+        ownedRealEstates.remove(toRemove);
+        DataCenter.removeRealEstate(toRemove);
+    }
+    
+    /**
+     * Die Methode gibt Informationen zu allen Immobilien des Besitzers zurück.
+     * 
+     * @return realEstatesInformation String[] enthält Informationen zu allen Immobilien.
+     */
+    public String[] getRealEstatesInformation() {
+        String[] realEstatesInformation = new String[ownedRealEstates.size()];
+        for (int i = 0; i < ownedRealEstates.size(); i++) {
+            realEstatesInformation[i] = ownedRealEstates.get(i).getInfo();
+        }
+        
+        return realEstatesInformation;
+    }
+    
+    /**
+     * Die übergebene Immobilie wird beim Benutzer gespeichert.
+     * 
+     * @param newRealEstate RealEstate - die Immobilie, die gespeichert werden soll.
+     */
+    public void addRealEstate(RealEstate newRealEstate) {
+        ownedRealEstates.add(newRealEstate);
+    }
+    
+    /**
      * Es wird überprüft, ob die Argumente mit der E-Mail und dem Passwort des Nutzers 
      * übereinstimmen.
      * 

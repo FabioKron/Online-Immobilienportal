@@ -37,6 +37,23 @@ public class DataCenter
         return null;
     }
     
+    /**
+     * Die übergebene Immobilie wird aus dem DataCenter gelöscht.
+     * 
+     * @param toRemove RealEstate - Immobilie, die gelöscht werden soll.
+     */
+    public static void removeRealEstate(RealEstate toRemove) {
+        realEstates.remove(toRemove);
+    }
+    
+    /**
+     * Die übergebene Immobilie wird im DataCenter gespeichert.
+     * 
+     * @param newRealEstate RealEstate - die Immobilie, die gespeichert werden soll.
+     */
+    public static void addRealEstate(RealEstate newRealEstate) {
+        realEstates.add(newRealEstate);
+    }
     
     /**
      * Die Methode speichert neue Benutzer.

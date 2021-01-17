@@ -164,10 +164,10 @@ public class ClientInterface extends Thread
                 displayAddRealEstateMenu(user);
                 break;
             case "ansehen":
-                //displayUsersRealEstates(user);
+                displayUsersRealEstates(user);
                 break;
             case "entfernen":
-                //displayRemoveRealEstateMenu(user);
+                displayRemoveRealEstateMenu(user);
                 break;
             case "suchen":
                 //displayAllRealEstates();
@@ -176,6 +176,77 @@ public class ClientInterface extends Thread
                 break;
             default:
                 output.writeUTF("Ungültige Eingabe!");
+        }
+    }
+    
+    /**
+     * Der Benutzer bekommt seine Immobilien mit zugewiesenen Nummern angezeigt;
+     * dann kann er anhand der Nummer entscheiden, welche Immobilie er löschen will.
+     * 
+     * @param owner User - Benutzer, der eine Immobilie löschen will.
+     * 
+     * @throws IOException bei Fehlern mit der Verbindung mit dem Client.
+     */
+    public void displayRemoveRealEstateMenu(User owner) throws IOException {
+        String[] realEstatesInformation = owner.getRealEstatesInformation();
+        
+        if (realEstatesInformation.length > 0) {
+            
+            for (int i = 0; i < realEstatesInformation.length; i++) {
+                output.writeUTF("\nNummer der nächsten Immobilie: " + (i + 1));
+                output.writeUTF(realEstatesInformation[i]);
+            }
+            int realEstateToRemove = receiveRealEstateNumInput(realEstatesInformation.length);
+            owner.removeRealEstate(realEstateToRemove - 1);
+            
+            output.writeUTF("Die Immobilie wurde entfernt!");
+            
+        } else {
+            output.writeUTF("Keine Immobilien gefunden!");
+        }
+        
+    }
+    
+    /**
+     * Der Benutzer wird dazu aufgefordert die Nummer der Immobilie einzugeben, die er löschen will.
+     * 
+     * @param maxRealEstateNum int - Höchste Eingabe, die der Nutzer tätigen kann.
+     * 
+     * @return realEstateNum int - Nummer der ausgewählten Immobilie.
+     * 
+     * @throws IOException bei Fehlern mit der Verbindung mit dem Client.
+     */
+    public int receiveRealEstateNumInput(int maxRealEstateNum) throws IOException{
+        while (true) {
+            output.writeUTF("Was ist die Nummer der Immobilie, die Sie löschen möchten?");
+            int realEstateNum = Integer.parseInt(getUserInput());
+            
+            if (realEstateNum > 0 && realEstateNum <= maxRealEstateNum) {
+                return realEstateNum;
+            }
+            
+            output.writeUTF("\nUngültige Eingabe!");
+        }
+    }
+    
+    /**
+     * Die Methode gibt beim Benutzer alle Immobilie aus, die dieser veröffentlicht hat.
+     * 
+     * @param owner User - Der Benutzert, dessen Immobilien ausgegeben werden sollen.
+     * 
+     * @throws IOException bei Fehlern mit der Verbindung mit dem Client.
+     */
+    public void displayUsersRealEstates(User owner) throws IOException{
+        String[] realEstatesInformation = owner.getRealEstatesInformation();
+        
+        if (realEstatesInformation.length > 0) {
+            
+            for (String infoString: realEstatesInformation) {
+                output.writeUTF("\n"+infoString);
+            }
+            
+        } else {
+            output.writeUTF("\nKeine Immobilien gefunden!");
         }
     }
     
@@ -197,10 +268,9 @@ public class ClientInterface extends Thread
         RealEstate newRealEstate = new RealEstate(price, address, numOfRooms, floorArea,
         user);
         
-        System.out.println(newRealEstate.getInfo());
-        
-        
-        //Immobilie spiechern
+       
+        user.addRealEstate(newRealEstate);
+        DataCenter.addRealEstate(newRealEstate);
     }
     
     /**
