@@ -42,7 +42,7 @@ public class RealEstate
      * @return info String - Informationen zur Immobilie.
      */
     public String getInfo() {
-        String info = String.format("\n%s wird verkauft für $%,.2f!"
+        String info = String.format("%s wird verkauft für $%,.2f!"
             + "\nDie Immobilie hat %d Räume und eine Fläche von %d qm."
             + "\nDie E-Mail des Besitzers ist: %s",
             address,

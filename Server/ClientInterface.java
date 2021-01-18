@@ -59,7 +59,7 @@ public class ClientInterface extends Thread
      */
     public void run() {
         try {
-            output.writeUTF("\n\nWillkommen auf unserem Immobilienportal!");
+            output.writeUTF("\n\n\n\n\n\nWillkommen auf unserem Immobilienportal!");
             displayMainMenu();
         }catch(EOFException e) {
             System.out.println("Verbindung zu " + clientAddress + " getrennt!");
@@ -98,7 +98,7 @@ public class ClientInterface extends Thread
         } else if(userInput.equals("anmelden")) {
             displaySignInMenu();
         } else{
-            output.writeUTF("\n\nUngültige Eingabe!!");
+            output.writeUTF("Ungültige Eingabe!!");
         }
     }
     
@@ -191,7 +191,7 @@ public class ClientInterface extends Thread
                 output.writeUTF("\n" + infoString);
             }
         } else {
-            output.writeUTF("\nKeine Immobilien gefunden!");
+            output.writeUTF("Keine Immobilien gefunden!");
         }
     }
     
@@ -241,7 +241,7 @@ public class ClientInterface extends Thread
                 return realEstateNum;
             }
             
-            output.writeUTF("\nUngültige Eingabe!");
+            output.writeUTF("Ungültige Eingabe!");
         }
     }
     
@@ -262,7 +262,7 @@ public class ClientInterface extends Thread
             }
             
         } else {
-            output.writeUTF("\nKeine Immobilien gefunden!");
+            output.writeUTF("Keine Immobilien gefunden!");
         }
     }
     
@@ -274,7 +274,7 @@ public class ClientInterface extends Thread
      * @throws IOException bei Fehlern mit der Verbindung mit dem Client.
      */
     public void displayAddRealEstateMenu(User user) throws IOException {
-        output.writeUTF("\nHier können Sie eine neue Immobilien hinzufügen!");
+        output.writeUTF("Hier können Sie eine neue Immobilien hinzufügen!");
         
         double price = receivePriceInput();
         String address = receiveAddressInput();
@@ -334,7 +334,7 @@ public class ClientInterface extends Thread
      */
     public String receiveAddressInput() throws IOException {
         while (true) {
-            output.writeUTF("\nWas ist die Adresse der Immobilie?");
+            output.writeUTF("Was ist die Adresse der Immobilie?");
             String address = getUserInput();
             
             if (address.length() > 0) {
@@ -352,7 +352,7 @@ public class ClientInterface extends Thread
      */
     public double receivePriceInput() throws IOException{
         while (true) {
-            output.writeUTF("\nWas ist der Preis Ihrer Immobilie?");
+            output.writeUTF("Was ist der Preis Ihrer Immobilie?");
             double price = Double.parseDouble(getUserInput());
             
             if (price > 0) {
@@ -369,7 +369,7 @@ public class ClientInterface extends Thread
      * @return userMenu String - Das Benutzermenü.
      */
     public String getUserMenu(String name) {
-        String userMenu = "\n\nHerzlich Willkommen " + name.toUpperCase() + "!" 
+        String userMenu = "\nHerzlich Willkommen " + name.toUpperCase() + "!" 
             + "\nWas wollen Sie tun?"
             + "\nhinzufügen: Immobilie hinzufügen"
             + "\nansehen: Eigene Immobilien ansehen"
@@ -389,7 +389,7 @@ public class ClientInterface extends Thread
      */
     public void displaySignUpMenu() throws IOException {
         
-        output.writeUTF("\n\nHier können sie einen neuen Nutzer registrieren!");
+        output.writeUTF("Hier können sie einen neuen Nutzer registrieren!");
         
         String name = receiveNameInput();
         String eMail = receiveEMailInput();
@@ -409,7 +409,7 @@ public class ClientInterface extends Thread
      */
     public String receivePasswordInput() throws IOException {
         while (true) {
-            output.writeUTF("\nBitte geben Sie Ihr Passwort ein:");
+            output.writeUTF("Bitte geben Sie Ihr Passwort ein:");
             String password = getUserInput();
             
             if (password.length() >= 8) {
@@ -441,7 +441,7 @@ public class ClientInterface extends Thread
      */
     public String receiveEMailInput() throws IOException {
         while (true) {
-            output.writeUTF("\nBitte geben Sie Ihre E-Mail ein:");
+            output.writeUTF("Bitte geben Sie Ihre E-Mail ein:");
             String eMail = getUserInput();
             
             if (eMail.matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$")) {
@@ -462,7 +462,7 @@ public class ClientInterface extends Thread
     public String receiveNameInput() throws IOException {
         
         while (true) {
-            output.writeUTF("\nBitte geben Sie Ihren Namen ein:");
+            output.writeUTF("Bitte geben Sie Ihren Namen ein:");
             String name = getUserInput();
             
             if (name.matches("[A-Za-z][A-Za-z -]*")) {
@@ -482,7 +482,7 @@ public class ClientInterface extends Thread
      */
     public String getMainMenu() {
         String mainMenu =
-            "\n\nDas ist das Hauptmenü des Immobilienportals!" +
+            "\nDas ist das Hauptmenü des Immobilienportals!" +
             "\nWas wollen Sie tun?" + 
             "\nregistrieren: einen neuen Account registrieren" +
             "\nanmelden: sich mit einem Account anmelden" +

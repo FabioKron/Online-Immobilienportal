@@ -82,6 +82,8 @@ public class Main
                 } else {
                     output.writeUTF(userInput);
                 }
+                System.out.print("\n");
+
             } else {
                 System.out.println(serverMessage);
             }
