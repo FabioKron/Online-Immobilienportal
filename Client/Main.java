@@ -55,6 +55,8 @@ public class Main
             System.out.println("\nBis zum nächsten mal!");
         } catch(UnknownHostException | ConnectException e) {
             System.out.println("Es konnte keine Verbindung zum Server hergestellt werden!");
+        } catch(SocketException e) {
+            System.out.println("Verbindung zum Server abgebrochen!");
         } catch(IOException e) {
             e.printStackTrace();
         }

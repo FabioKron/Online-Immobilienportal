@@ -61,7 +61,7 @@ public class ClientInterface extends Thread
         try {
             output.writeUTF("\n\n\n\n\n\nWillkommen bei unserem Immobilienportal!");
             displayMainMenu();
-        }catch(EOFException e) {
+        }catch(EOFException | SocketException e) {
             System.out.println("Verbindung zu " + clientAddress + " getrennt!");
         }catch(IOException e){
             e.printStackTrace();
