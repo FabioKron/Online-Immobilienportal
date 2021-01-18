@@ -31,7 +31,7 @@ public class Main
      * 
      * @throws IOException bei Problemen mit dem Server.
      */
-    public static void runServer() throws IOException{
+    private static void runServer() throws IOException{
         ServerSocket server = new ServerSocket(port);
         System.out.println("Server online");
         
@@ -45,7 +45,7 @@ public class Main
      * @param server : ServerSocket.
      * @throws IOException bei Fehlern des Verbindungsaufbaus mit Clients.
      */
-    public static void connectClients(ServerSocket server) throws IOException {
+    private static void connectClients(ServerSocket server) throws IOException {
         while (true) {
             System.out.println("Warten auf Client auf Port " + port );
             Socket client = server.accept();

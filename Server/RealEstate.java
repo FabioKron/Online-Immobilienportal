@@ -27,7 +27,7 @@ public class RealEstate
      * @param floorArea int - Fläche der Immobilie.
      * @param owner User - Besitzer der Immobilie.
      */
-    public RealEstate(double price, String address, int numOfRooms, int floorArea,
+    RealEstate(double price, String address, int numOfRooms, int floorArea,
     User owner) {
         this.price = price;
         this.address = address;
@@ -41,7 +41,7 @@ public class RealEstate
      * 
      * @return info String - Informationen zur Immobilie.
      */
-    public String getInfo() {
+    String getInfo() {
         String info = String.format("%s wird verkauft für $%,.2f!"
             + "\nDie Immobilie hat %d Räume und eine Fläche von %d qm."
             + "\nDie E-Mail des Besitzers ist: %s",

@@ -29,7 +29,7 @@ public class User
      * @param eMail String : E-Mail des Benutzers.
      * @param password String : Verschlüsseltes Passwort des Benutzers.
      */
-    public User(String name, String eMail, String password) {
+    User(String name, String eMail, String password) {
         this.name = name;
         this.eMail = eMail;
         this.password = password;
@@ -41,7 +41,7 @@ public class User
      * 
      * @param indexOfRealEstate int - Index der Immobilie, die gelöscht werden soll.
      */
-    public void removeRealEstate(int indexOfRealEstate) {
+    void removeRealEstate(int indexOfRealEstate) {
         RealEstate toRemove = ownedRealEstates.get(indexOfRealEstate);
         ownedRealEstates.remove(toRemove);
         DataCenter.removeRealEstate(toRemove);
@@ -52,7 +52,7 @@ public class User
      * 
      * @return realEstatesInformation String[] enthält Informationen zu allen Immobilien.
      */
-    public String[] getRealEstatesInformation() {
+    String[] getRealEstatesInformation() {
         String[] realEstatesInformation = new String[ownedRealEstates.size()];
         for (int i = 0; i < ownedRealEstates.size(); i++) {
             realEstatesInformation[i] = ownedRealEstates.get(i).getInfo();
@@ -66,7 +66,7 @@ public class User
      * 
      * @param newRealEstate RealEstate - die Immobilie, die gespeichert werden soll.
      */
-    public void addRealEstate(RealEstate newRealEstate) {
+    void addRealEstate(RealEstate newRealEstate) {
         ownedRealEstates.add(newRealEstate);
     }
     
@@ -80,7 +80,7 @@ public class User
      * 
      * @return isMatching boolean - true falls die Daten übereinstimmen, ansonsten false.
      */
-    public boolean matchesSignInData(String eMail, String password) {
+    boolean matchesSignInData(String eMail, String password) {
         boolean isMatching = this.eMail.equals(eMail) && this.password.equals(password);
         return isMatching;
     }
@@ -90,7 +90,7 @@ public class User
      * 
      * @return name String - Name des Benutzers.
      */
-    public String getName() {
+    String getName() {
         return name;
     }
     
@@ -99,7 +99,7 @@ public class User
      * 
      * @return eMail String - E-Mail des Benutzers.
      */
-    public String getEMail() {
+    String getEMail() {
         return eMail;
     }
 }

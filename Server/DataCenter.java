@@ -21,7 +21,7 @@ public class DataCenter
      * 
      * @return realEstatesInfo String[] - Array aus Informationsstrings der Immobilien.
      */
-    public static String[] getRealEstatesInformation() {
+    static String[] getRealEstatesInformation() {
         String[] realEstatesInfo = new String[realEstates.size()];
         for (int i = 0; i < realEstates.size(); i++) {
             realEstatesInfo[i] = realEstates.get(i).getInfo();
@@ -40,7 +40,7 @@ public class DataCenter
      * @return user User - falls die Anmeldedaten mit einem Nutzer übereinstimmen;
      * ansonsten null.
      */
-    public static User authenticateUser(String eMail, String password) {
+    static User authenticateUser(String eMail, String password) {
         for (User user: users) {
             if (user.matchesSignInData(eMail, password)) {
                 return user;
@@ -55,7 +55,7 @@ public class DataCenter
      * 
      * @param toRemove RealEstate - Immobilie, die gelöscht werden soll.
      */
-    public static void removeRealEstate(RealEstate toRemove) {
+    static void removeRealEstate(RealEstate toRemove) {
         realEstates.remove(toRemove);
     }
     
@@ -64,7 +64,7 @@ public class DataCenter
      * 
      * @param newRealEstate RealEstate - die Immobilie, die gespeichert werden soll.
      */
-    public static void addRealEstate(RealEstate newRealEstate) {
+    static void addRealEstate(RealEstate newRealEstate) {
         realEstates.add(newRealEstate);
     }
     
@@ -73,7 +73,7 @@ public class DataCenter
      * 
      * @param newUser User: der neu erstellte Benutzer.
      */
-    public static void addNewUser(User newUser) {
+    static void addNewUser(User newUser) {
         users.add(newUser);
     }
 }

@@ -74,7 +74,7 @@ public class Main
      * 
      * @throws IOException falls Fehler bei der Kommunikation mit dem Server auftreten.
      */
-    public static void listen(DataInputStream input, DataOutputStream output, Scanner scanner) throws IOException {
+    private static void listen(DataInputStream input, DataOutputStream output, Scanner scanner) throws IOException {
         while(true) { 
             String serverMessage = input.readUTF();
             if (serverMessage.equals("Benutzereingabe")){
