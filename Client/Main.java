@@ -11,8 +11,9 @@ import java.util.Scanner;
  */
 public class Main
 {   
-    /** IP-Adresse des Servers. */
-    private static String serverIP = "127.0.0.1";
+    ///** IP-Adresse des Servers. */
+    //private static String serverIP = "127.0.0.1";
+    
     /** Port des Servers. */
     private static int serverPort = 110;
     
@@ -20,7 +21,8 @@ public class Main
      * Startet den Client
      * Vor dem Start des Clients muss der Server gestartet sein.
      */
-    public static void main() {
+    public static void main(String serverIP) {
+        
         System.out.println("\n\n");
         System.err.println("\n\n");
         
@@ -72,8 +74,8 @@ public class Main
         while(true) { 
             String serverMessage = input.readUTF();
             if (serverMessage.equals("Benutzereingabe")){
-                String userInput = scanner.nextLine().toLowerCase();
-                if (userInput.equals("beenden")){
+                String userInput = scanner.nextLine();
+                if (userInput.toLowerCase().equals("beenden")){
                     return;
                 } else {
                     output.writeUTF(userInput);

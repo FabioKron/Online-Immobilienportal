@@ -17,6 +17,19 @@ public class DataCenter
     private static LinkedList<RealEstate> realEstates = new LinkedList<RealEstate>();
     
     /**
+     * Die Methode gibt Informationen zu jeder veröffentlichten Immobilie zurück.
+     * 
+     * @return realEstatesInfo String[] - Array aus Informationsstrings der Immobilien.
+     */
+    public static String[] getRealEstatesInformation() {
+        String[] realEstatesInfo = new String[realEstates.size()];
+        for (int i = 0; i < realEstates.size(); i++) {
+            realEstatesInfo[i] = realEstates.get(i).getInfo();
+        }
+        return realEstatesInfo;
+    }
+    
+    /**
      * Es wird überprüft, ob die E-Mail und das Passwort mit einem gespeicherten
      * Nutzer übereinstimmen; falls das der Fall ist, wird dieser Nutzer zurückgegeben.
      * 

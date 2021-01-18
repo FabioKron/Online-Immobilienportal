@@ -170,12 +170,28 @@ public class ClientInterface extends Thread
                 displayRemoveRealEstateMenu(user);
                 break;
             case "suchen":
-                //displayAllRealEstates();
+                displayAllRealEstates();
                 break;
             case "abmelden":
                 break;
             default:
                 output.writeUTF("Ungültige Eingabe!");
+        }
+    }
+    
+    /**
+     * Die Methode gibt alle Immobilien aus, die veröffentlicht wurden.
+     * 
+     * @throws IOException bei Fehlern mit der Verbindung mit dem Client.
+     */
+    public void displayAllRealEstates() throws IOException {
+        String[] realEstatesInfo = DataCenter.getRealEstatesInformation();
+        if (realEstatesInfo.length > 0) {
+            for(String infoString: realEstatesInfo) {
+                output.writeUTF("\n" + infoString);
+            }
+        } else {
+            output.writeUTF("\nKeine Immobilien gefunden!");
         }
     }
     
@@ -449,7 +465,7 @@ public class ClientInterface extends Thread
             output.writeUTF("\nBitte geben Sie Ihren Namen ein:");
             String name = getUserInput();
             
-            if (name.matches("[a-z][a-z -]*")) {
+            if (name.matches("[A-Za-z][A-Za-z -]*")) {
                 return name;
             }
             output.writeUTF("Ungültiger Name!");
