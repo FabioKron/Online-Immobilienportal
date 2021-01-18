@@ -235,13 +235,17 @@ public class ClientInterface extends Thread
     public int receiveRealEstateNumInput(int maxRealEstateNum) throws IOException{
         while (true) {
             output.writeUTF("Was ist die Nummer der Immobilie, die Sie löschen möchten?");
-            int realEstateNum = Integer.parseInt(getUserInput());
-            
-            if (realEstateNum > 0 && realEstateNum <= maxRealEstateNum) {
-                return realEstateNum;
+            try {
+                int realEstateNum = Integer.parseInt(getUserInput());
+                
+                if (realEstateNum > 0 && realEstateNum <= maxRealEstateNum) {
+                    return realEstateNum;
+                }
+                    output.writeUTF("Ungültige Eingabe!");   
+            } catch(NumberFormatException e) {
+                output.writeUTF("Ungültige Eingabe!");
             }
             
-            output.writeUTF("Ungültige Eingabe!");
         }
     }
     
@@ -299,10 +303,15 @@ public class ClientInterface extends Thread
     public int receiveFloorAreaInput() throws IOException {
         while (true) {
             output.writeUTF("Welche Fläche hat die Immobilie?");
-            int floorArea = Integer.parseInt(getUserInput());
-            
-            if (floorArea > 0) {
-                return floorArea;
+            try {
+                int floorArea = Integer.parseInt(getUserInput());
+                
+                if (floorArea > 0) {
+                    return floorArea;
+                }
+                output.writeUTF("Ungültige Eingabe!");              
+            } catch(NumberFormatException e) {
+                output.writeUTF("Ungültige Eingabe!");
             }
         }
     }
@@ -317,10 +326,16 @@ public class ClientInterface extends Thread
     public int receiveNumOfRoomsInput() throws IOException {
         while (true) {
             output.writeUTF("Wie viele Räume hat die Immobilie?");
-            int numOfRooms = Integer.parseInt(getUserInput());
-            
-            if (numOfRooms > 0) {
-                return numOfRooms;
+            try {
+                int numOfRooms = Integer.parseInt(getUserInput());
+                
+                if (numOfRooms > 0) {
+                    return numOfRooms;
+                }
+                output.writeUTF("Ungültige Eingabe!");
+                
+            } catch(NumberFormatException e) {
+                output.writeUTF("Ungültige Eingabe!");
             }
         }
     }
@@ -340,6 +355,7 @@ public class ClientInterface extends Thread
             if (address.length() > 0) {
                 return address;
             }
+            
         }
     }
     
@@ -353,10 +369,17 @@ public class ClientInterface extends Thread
     public double receivePriceInput() throws IOException{
         while (true) {
             output.writeUTF("Was ist der Preis Ihrer Immobilie?");
-            double price = Double.parseDouble(getUserInput());
+            try {
+                double price = Double.parseDouble(getUserInput());
             
-            if (price > 0) {
-                return price;
+                if (price > 0) {
+                    return price;
+                }
+                
+                output.writeUTF("Ungültige Eingabe!");
+                
+            } catch(NumberFormatException e) {
+                output.writeUTF("Ungültige Eingabe!");
             }
         }
     }
