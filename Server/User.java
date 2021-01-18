@@ -33,9 +33,7 @@ public class User
         this.name = name;
         this.eMail = eMail;
         this.password = password;
-        
-        System.out.println("Neuer Benutzer hinzugefügt: " + this.name);
-    }
+        }
     
     /**
      * Die Methode löscht die Immobilie mit dem angegebenen Index vom
