@@ -20,6 +20,8 @@ public class Main
     /**
      * Startet den Client
      * Vor dem Start des Clients muss der Server gestartet sein.
+     * 
+     * @param serverIP String - IP-Adresse des Servers.
      */
     public static void main(String serverIP) {
         
