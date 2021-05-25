@@ -42,7 +42,7 @@ public class Main
     /**
      * Verbindet neue Clients mit dem Server.
      * 
-     * @param server : ServerSocket.
+     * @param server ServerSocket.
      * @throws IOException bei Fehlern des Verbindungsaufbaus mit Clients.
      */
     private static void connectClients(ServerSocket server) throws IOException {

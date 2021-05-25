@@ -13,26 +13,26 @@ import java.security.NoSuchAlgorithmException;
  */
 public class ClientInterface extends Thread
 {   
-    /** Schnittstelle zur Verbindung mit dem Client. */
+    /** Schnittstelle zur Verbindung mit dem Client */
     private Socket client;
     
-    /** Zum Empfangen von Daten des Clients. */
+    /** Zum Empfangen von Daten des Clients */
     private DataInputStream input;
     
-    /** Zum Senden von Daten an den Client. */
+    /** Zum Senden von Daten an den Client */
     private DataOutputStream output;
     
-    /** IP-Adresse und Port des Clients. */
+    /** IP-Adresse und Port des Clients */
     private SocketAddress clientAddress;
     
     
     /**
-     * Verbindungsaufbau mit dem Client,
-     * Initialisieren der dazu benötigten Schnittstellen.
+     * Verbindungsaufbau mit dem Client und
+     * Initialisierung der dazu benötigten Schnittstellen.
      * 
-     * @param client : Socket 
+     * @param client Socket 
      */
-    ClientInterface(Socket client) {
+    public ClientInterface(Socket client) {
         this.client = client;
         try {
             this.input = new DataInputStream(client.getInputStream());
@@ -55,7 +55,7 @@ public class ClientInterface extends Thread
     
     
     /**
-     * Kommunikation mit dem Client: Benutzerobefläche und Benutzereingaben.
+     * Starten der Kommunikation mit dem Client: Benutzerobefläche und Benutzereingaben
      */
     public void run() {
         try {
@@ -70,10 +70,10 @@ public class ClientInterface extends Thread
     }
     
     /**
-     * Senden des Hauptmenüs an den Client;
+     * Senden des Hauptmenüs an den Client +
      * Empfangen und Verarbeiten der Benutzereingabe.
      * 
-     * @throws IOException bei Fehlern mit der Verbindung.
+     * @throws IOException bei Fehlern mit der Verbindung
      */
     private void displayMainMenu() throws IOException {
         while (true){
@@ -86,9 +86,9 @@ public class ClientInterface extends Thread
     
     /**
      * Verarbeiten der Benutzereingabe im Hauptmenü
-     * mit möglicher Einleitung des nächsten Programmschritts.
+     * mit möglicher Einleitung des nächsten Programmschritts (Untermenü).
      * 
-     * @param userInput : String Benutzereingabe im Hauptmenü.
+     * @param userInput String - Benutzereingabe im Hauptmenü
      * 
      * @throws IOException bei Fehlern mit der Verbindung.
      */
@@ -182,7 +182,7 @@ public class ClientInterface extends Thread
     /**
      * Die Methode gibt alle Immobilien aus, die veröffentlicht wurden.
      * 
-     * @throws IOException bei Fehlern mit der Verbindung mit dem Client.
+     * @throws IOException bei Fehlern mit der Verbindung mit dem Client
      */
     private void displayAllRealEstates() throws IOException {
         String[] realEstatesInfo = DataCenter.getRealEstatesInformation();
@@ -196,12 +196,12 @@ public class ClientInterface extends Thread
     }
     
     /**
-     * Der Benutzer bekommt seine Immobilien mit zugewiesenen Nummern angezeigt;
+     * Der Benutzer bekommt seine Immobilien mit zugewiesenen Nummern angezeigt,
      * dann kann er anhand der Nummer entscheiden, welche Immobilie er löschen will.
      * 
-     * @param owner User - Benutzer, der eine Immobilie löschen will.
+     * @param owner User - Benutzer, der eine Immobilie löschen will
      * 
-     * @throws IOException bei Fehlern mit der Verbindung mit dem Client.
+     * @throws IOException bei Fehlern mit der Verbindung mit dem Client
      */
     private void displayRemoveRealEstateMenu(User owner) throws IOException {
         String[] realEstatesInformation = owner.getRealEstatesInformation();
@@ -226,11 +226,11 @@ public class ClientInterface extends Thread
     /**
      * Der Benutzer wird dazu aufgefordert die Nummer der Immobilie einzugeben, die er löschen will.
      * 
-     * @param maxRealEstateNum int - Höchste Eingabe, die der Nutzer tätigen kann.
+     * @param maxRealEstateNum int - Höchste Eingabe, die der Nutzer tätigen kann
      * 
-     * @return realEstateNum int - Nummer der ausgewählten Immobilie.
+     * @return realEstateNum int - Nummer der ausgewählten Immobilie
      * 
-     * @throws IOException bei Fehlern mit der Verbindung mit dem Client.
+     * @throws IOException bei Fehlern mit der Verbindung mit dem Client
      */
     private int receiveRealEstateNumInput(int maxRealEstateNum) throws IOException{
         while (true) {
@@ -252,9 +252,9 @@ public class ClientInterface extends Thread
     /**
      * Die Methode gibt beim Benutzer alle Immobilie aus, die dieser veröffentlicht hat.
      * 
-     * @param owner User - Der Benutzert, dessen Immobilien ausgegeben werden sollen.
+     * @param owner User - Der Benutzert, dessen Immobilien ausgegeben werden sollen
      * 
-     * @throws IOException bei Fehlern mit der Verbindung mit dem Client.
+     * @throws IOException bei Fehlern mit der Verbindung mit dem Client
      */
     private void displayUsersRealEstates(User owner) throws IOException{
         String[] realEstatesInformation = owner.getRealEstatesInformation();
@@ -273,9 +273,9 @@ public class ClientInterface extends Thread
     /**
      * Durch diese Methode kann der Benutzer neue Immobilien erstellen und speichern.
      * 
-     * @param user User - der angemeldete Benutzer.
+     * @param user User - der angemeldete Benutzer
      * 
-     * @throws IOException bei Fehlern mit der Verbindung mit dem Client.
+     * @throws IOException bei Fehlern mit der Verbindung mit dem Client
      */
     private void displayAddRealEstateMenu(User user) throws IOException {
         output.writeUTF("Hier können Sie eine neue Immobilien hinzufügen!");
@@ -296,9 +296,9 @@ public class ClientInterface extends Thread
     /**
      * Der Benutzer wird aufgefordert, die Fläche der Immobilie einzugeben.
      * 
-     * @return floorArea int - eingegebene Fläche der Immobilie.
+     * @return floorArea int - eingegebene Fläche der Immobilie
      * 
-     * @throws IOException bei Fehlern mit der Verbindung mit dem Client.
+     * @throws IOException bei Fehlern mit der Verbindung mit dem Client
      */
     private int receiveFloorAreaInput() throws IOException {
         while (true) {
@@ -319,9 +319,9 @@ public class ClientInterface extends Thread
     /**
      * Der Benutzer wird aufgefordert, die Anzahl der Räume der Immobilie einzugeben.
      * 
-     * @return numOfRooms int - eingegebene Anzahl der Räume der Immobilie.
+     * @return numOfRooms int - eingegebene Anzahl der Räume der Immobilie
      * 
-     * @throws IOException bei Fehlern mit der Verbindung mit dem Client.
+     * @throws IOException bei Fehlern mit der Verbindung mit dem Client
      */
     private int receiveNumOfRoomsInput() throws IOException {
         while (true) {
@@ -343,9 +343,9 @@ public class ClientInterface extends Thread
     /**
      * Der Benutzer wird dazu aufgefordert, die Adresse seiner Immobilie einzugeben.
      * 
-     * @return address String - eingegebene Adresse der Immobilie.
+     * @return address String - eingegebene Adresse der Immobilie
      * 
-     * @throws IOException bei Fehlern mit der Verbindung mit dem Client.
+     * @throws IOException bei Fehlern mit der Verbindung mit dem Client
      */
     private String receiveAddressInput() throws IOException {
         while (true) {
@@ -362,9 +362,9 @@ public class ClientInterface extends Thread
     /**
      * Der Benutzer wird dazu aufgefordert, den Preis seiner Immobilie einzugeben.
      * 
-     * @return price double - Eingegebener Preis der Immobilie.
+     * @return price double - Eingegebener Preis der Immobilie
      * 
-     * @throws IOException bei Fehlern mit der Verbindung mit dem Client.
+     * @throws IOException bei Fehlern mit der Verbindung mit dem Client
      */
     private double receivePriceInput() throws IOException{
         while (true) {
@@ -387,9 +387,9 @@ public class ClientInterface extends Thread
     /**
      * Diese Methode gibt das Nutzermenü zurück.
      * 
-     * @param name String - Name des Benutzers.
-     * 
-     * @return userMenu String - Das Benutzermenü.
+     * @param name String - Name des Benutzers
+     *
+     * @return userMenu String - Das Benutzermenü
      */
     private String getUserMenu(String name) {
         String userMenu = "\nHerzlich Willkommen " + name.toUpperCase() + "!" 
@@ -405,10 +405,10 @@ public class ClientInterface extends Thread
     
     /**
      * Benutzeroberfläche, um einen neuen Nutzer zu registrieren:
-     * Nutzer wird zur Eingabe von Name, E-Mail und Passwort aufgefordert
+     * Nutzer wird zur Eingabe von Name, E-Mail und Passwort aufgefordert + 
      * Neuer Nutzer wird erstellt und gespeichert.
      * 
-     * @throws IOException bei Fehlern mit der Verbindung.
+     * @throws IOException bei Fehlern mit der Verbindung
      */
     private void displaySignUpMenu() throws IOException {
         
@@ -426,9 +426,9 @@ public class ClientInterface extends Thread
      * In der Methode wird der Nutzer dazu aufgefordert, sein Passort einzugeben;
      * dieses wird dann verschlüsselt zurückgegeben.
      * 
-     * @throws IOException bei Fehlern der Kommunikation mit dem Client.
-     * 
-     * @return password verschlüsseltes Passwort des Benutzers.
+     * @throws IOException bei Fehlern der Kommunikation mit dem Client
+     *
+     * @return password verschlüsseltes Passwort des Benutzers
      */
     private String receivePasswordInput() throws IOException {
         while (true) {
@@ -455,12 +455,12 @@ public class ClientInterface extends Thread
     }
     
     /**
-     * Der Benutzer wird aufgefordert, seine E-Mail einzugeben;
+     * Der Benutzer wird aufgefordert, seine E-Mail einzugeben,
      * daraufhin wird die Eingabe validiert.
      * 
-     * @throws IOException bei Problemen der Kommunikation mit dem Client.
+     * @throws IOException bei Problemen der Kommunikation mit dem Client
      * 
-     * @return eMail validierte E-Mail des Benutzers.
+     * @return eMail validierte E-Mail des Benutzers
      */
     private String receiveEMailInput() throws IOException {
         while (true) {
@@ -475,12 +475,12 @@ public class ClientInterface extends Thread
     }
     
     /**
-     * Der Benutzer wird aufgefordert, seinen Namen einzugeben;
+     * Der Benutzer wird aufgefordert, seinen Namen einzugeben,
      * daraufhin wird der Name validiert.
      * 
-     * @throws IOException bei Fehlern der Kommunikation mit dem Client.
+     * @throws IOException bei Fehlern der Kommunikation mit dem Client
      * 
-     * @return name validierter Name des Benutzers.
+     * @return name validierter Name des Benutzers
      */
     private String receiveNameInput() throws IOException {
         
@@ -501,7 +501,7 @@ public class ClientInterface extends Thread
     /**
      * Rückgabe des Texts des Hauptmenüs.
      * 
-     * @return mainMenu : String; das Hauptmenü als String.
+     * @return mainMenu String - das Hauptmenü als String
      */
     private String getMainMenu() {
         String mainMenu =
@@ -518,9 +518,9 @@ public class ClientInterface extends Thread
     /**
      * Fordern und Empfangen einer Benutzereingabe beim Client.
      * 
-     * @return userInput : String; Benutzereingabe beim Client.
+     * @return userInput String - Benutzereingabe beim Client
      * 
-     * @throws IOException bei Fehlern mit der Verbindung.
+     * @throws IOException bei Fehlern mit der Verbindung
      */
     private String getUserInput() throws IOException {
         output.writeUTF("Benutzereingabe");

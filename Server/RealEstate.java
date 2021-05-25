@@ -2,8 +2,8 @@
 /**
  * Diese Klasse speichert die Informationen zu der jeweiligen Immobilie.
  *
- * @author Fabio Kron.
- * @version 1/2021.
+ * @author Fabio Kron
+ * @version 1/2021
  */
 public class RealEstate
 {   
@@ -21,11 +21,11 @@ public class RealEstate
     /**
      * Konstruktor von RealEstate; die Attribute werden initialisiert.
      * 
-     * @param price double - Preis der Immobilie.
-     * @param address String - Adresse der Immobilie.
-     * @param numOfRooms int - Anzahl der Räume der Immobilie.
-     * @param floorArea int - Fläche der Immobilie.
-     * @param owner User - Besitzer der Immobilie.
+     * @param price double - Preis der Immobilie
+     * @param address String - Adresse der Immobilie
+     * @param numOfRooms int - Anzahl der Räume der Immobilie
+     * @param floorArea int - Fläche der Immobilie
+     * @param owner User - Besitzer der Immobilie
      */
     RealEstate(double price, String address, int numOfRooms, int floorArea,
     User owner) {
@@ -39,7 +39,7 @@ public class RealEstate
     /**
      * Die Methode gibt einen "Infostring" über die Immobilie zurück.
      * 
-     * @return info String - Informationen zur Immobilie.
+     * @return info String - Informationen zur Immobilie
      */
     String getInfo() {
         String info = String.format("%s wird verkauft für $%,.2f!"
