@@ -14,14 +14,16 @@ public class Main
     ///** IP-Adresse des Servers. */
     //private static String serverIP = "127.0.0.1";
     
-    /** Port des Servers. */
+    /** Port des Servers*/
     private static int serverPort = 110;
     
+    
     /**
-     * Startet den Client
-     * Vor dem Start des Clients muss der Server gestartet sein.
+     * Methode startet den Client;
+     * vor dem Start des Clients muss der Server gestartet sein.
      * 
-     * @param serverIP String - IP-Adresse des Servers.
+     * @param serverIP String - IP-Adresse des Servers
+     * 
      */
     public static void main(String serverIP) {
         
@@ -62,17 +64,18 @@ public class Main
         }
     }
     
+    
     /**
-     * Kommunikation mit dem Server
-     * Erhalten von Nachrichten des Servers
-     * Anzeigen der Benutzerobefläche
-     * Senden von Benutzereingaben.
+     * Kommunikation mit dem Server: 
+     * Erhalten von Nachrichten des Servers,
+     * Anzeigen der Benutzerobefläche,
+     * Senden von Benutzereingaben
      * 
-     * @param input : DataInputStream zum empfangen von Nachrichten des Servers.
-     * @param output : DataOutputStream zum senden von Nachrichten an den Server.
-     * @param scanner : Scanner zum lesen von Benutzereingaben.
+     * @param input - DataInputStream zum empfangen von Nachrichten des Servers
+     * @param output - DataOutputStream zum senden von Nachrichten an den Server
+     * @param scanner - Scanner zum lesen von Benutzereingaben
      * 
-     * @throws IOException falls Fehler bei der Kommunikation mit dem Server auftreten.
+     * @throws IOException falls Fehler bei der Kommunikation mit dem Server auftreten
      */
     private static void listen(DataInputStream input, DataOutputStream output, Scanner scanner) throws IOException {
         while(true) { 
@@ -91,4 +94,5 @@ public class Main
             }
         }
     }
+    
 }
