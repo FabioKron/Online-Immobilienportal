@@ -10,10 +10,7 @@ import java.util.Scanner;
  * @version 12.2020
  */
 public class Main
-{   
-    ///** IP-Adresse des Servers. */
-    //private static String serverIP = "127.0.0.1";
-    
+{       
     /** Port des Servers*/
     private static int serverPort = 110;
     
@@ -21,15 +18,20 @@ public class Main
     /**
      * Methode startet den Client;
      * vor dem Start des Clients muss der Server gestartet sein.
-     * 
-     * @param serverIP String - IP-Adresse des Servers
-     * 
+     *   
      */
-    public static void main(String serverIP) {
+    public static void main(String[] args) {
         
         System.out.println("\n\n");
         System.err.println("\n\n");
         
+        Scanner scanner;
+        scanner = new Scanner(System.in);
+                
+        System.out.println("IP-Adresse des Servers:");
+        String serverIP = new Scanner(System.in).nextLine();
+        
+        System.out.println("\n\n");
         System.out.println("Verbidnungsaufbau...");
         try {
             Socket client = new Socket(serverIP, serverPort);
@@ -39,9 +41,6 @@ public class Main
             
             DataOutputStream output;
             output = new DataOutputStream(client.getOutputStream());
-            
-            Scanner scanner;
-            scanner = new Scanner(System.in);
             
             if (input.readUTF().equals("test")) {
                     

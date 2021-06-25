@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.LinkedList;
-
 
 /**
  * Diese Klasse speichert alle Benutzer und alle Immobilien.
@@ -14,7 +12,7 @@ public class DataCenter
     private static ArrayList<User> users = new ArrayList<User>();
     
     /** Speichert Referenzen zu allen Immobilien */
-    private static LinkedList<RealEstate> realEstates = new LinkedList<RealEstate>();
+    private static ArrayList<RealEstate> realEstates = new ArrayList<RealEstate>();
     
     /**
      * Die Methode gibt Informationen zu jeder veröffentlichten Immobilie zurück.

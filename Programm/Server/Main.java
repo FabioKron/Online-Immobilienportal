@@ -3,9 +3,6 @@ import java.io.*;
 
 /**
  * Diese Klasse startet den Server und verbindet neue Clients mit der Anwendung.
- *
- * @author Fabio Kron.
- * @version 23.12.2020.
  */
 public class Main
 {   
@@ -15,7 +12,7 @@ public class Main
     /**
      * Startet den Server.
      */
-    public static void main() {
+    public static void main(String[] args) {
         System.out.println("\n\n\n");
         System.err.println("\n\n\n");
         

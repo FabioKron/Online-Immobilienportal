@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Main
-comment0.text=\r\n\ Diese\ Klasse\ startet\ den\ Server\ und\ verbindet\ neue\ Clients\ mit\ der\ Anwendung.\r\n\r\n\ @author\ Fabio\ Kron.\r\n\ @version\ 23.12.2020.\r\n
-comment1.params=
-comment1.target=void\ main()
+comment0.text=\r\n\ Diese\ Klasse\ startet\ den\ Server\ und\ verbindet\ neue\ Clients\ mit\ der\ Anwendung.\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
 comment1.text=\r\n\ Startet\ den\ Server.\r\n
 comment2.params=
 comment2.target=void\ runServer()
